@@ -1,13 +1,28 @@
 # 老朱应用商店
 
+[![Release](https://img.shields.io/github/v/release/qq2991807184/laozhu-app-store?label=%E6%9C%80%E6%96%B0%E7%89%88)](https://github.com/qq2991807184/laozhu-app-store/releases/latest)
+[![License](https://img.shields.io/github/license/qq2991807184/laozhu-app-store)](LICENSE)
+![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-0078D6)
+
 参考火绒应用商店的界面布局与交互，打造的一款**简洁、安全、易用**的 Windows 桌面软件商店。
 品牌色为「金 + 深蓝」，呼应店标（金色 Z 徽章）。**无边框窗口**设计，自定义标题栏支持拖拽移动、双击最大化、边缘拉伸。
 
-## 快速开始
+- 仓库地址：<https://github.com/qq2991807184/laozhu-app-store>
+- 当前版本：**v1.0.0**
 
-- **桌面版（推荐）**：`dist/老朱应用商店.exe`（单文件，无需 Python），双击即用；桌面副本 `C:\Users\Administrator\Desktop\老朱应用商店.exe`。
-- **开发调试**：`py main.py`（需 `pip install pywebview pyinstaller pillow`）。
-- **浏览器预览**：双击 `index.html`（数据内联，file:// 直接可用，但无下载/安装/窗口控制能力）。
+## 下载安装
+
+普通用户直接去 [Releases](https://github.com/qq2991807184/laozhu-app-store/releases/latest) 下载 `老朱应用商店_Setup_v1.0.exe`，双击安装即可，无需 Python 环境。
+
+- 系统要求：Windows 10 / 11（x64），WebView2 运行时（Win11 自带；Win10 安装包会自动检测并装上）
+- 默认安装到 `D:\Program Files\老朱应用商店`，向导里可改
+- 安装后自动建桌面快捷方式 + 开始菜单文件夹「老朱应用商店」，控制面板「程序和功能」可卸载
+
+## 从源码运行
+
+- **桌面调试**：`py main.py`（需 `pip install pywebview pyinstaller pillow`）
+- **浏览器预览**：双击 `index.html`（数据内联，file:// 直接可用，但无下载/安装/窗口控制能力）
+- **自行打包**：见下文「打包」与「安装包构建」两节
 
 ## 收录原则
 
@@ -42,6 +57,11 @@
 ├── store_data.py       # ★ 权威数据源：分类 + 应用清单（改这里）
 ├── gen_data_js.py      # 由 store_data + icons_map.json 生成前端 data.js
 ├── fetch_icons.py      # 抓取官网 favicon 转真实图标，生成 icons_map.json
+├── winfix.py           # Win32 窗口补丁（无边框拉伸/圆角/DWM）
+├── nativefx.py         # 原生特效（阴影、亚克力、窗口动画）
+├── setup.iss           # Inno Setup 安装包脚本
+├── version_info.txt    # exe 版本资源（PyInstaller 引用）
+├── 老朱应用商店.spec    # PyInstaller 打包配置
 ├── assets/
 │   ├── css/style.css   # 样式（标题栏/卡片/弹窗/抽屉/响应式）
 │   ├── js/app.js       # 交互逻辑
@@ -93,3 +113,8 @@ build\tools\InnoSetup\ISCC.exe setup.iss
 - 拖拽移动：pywebview 原生支持 CSS `-webkit-app-region: drag`。
 - 图标：优先抓官网彩色 favicon（>32px 才采用），抓不到用 emoji + 品牌色兜底；部分 SPA 官网抓不到，可手动放 PNG 到 `assets/img/apps/{id}.png` 并登记进 `icons_map.json`。
 - 下载链接均指向官方渠道；直链会随版本变动，建议定期核对（直链失效时自动回退打开官方下载页）。
+
+## 许可证
+
+MIT，见 [LICENSE](LICENSE)。收录的软件名称、图标、安装包版权归各自厂商所有，本项目只做索引与展示，不代理分发。
+
