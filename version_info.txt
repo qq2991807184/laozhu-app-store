@@ -1,0 +1,35 @@
+# -*- mode: python ; coding: utf-8 -*-
+# PyInstaller 版本信息资源（VSVersionInfo 格式）
+# 编译时通过 spec 里的 EXE(version='version_info.txt') 引用，
+# 写入 exe 的 RT_VERSION 资源，即「属性 → 详细信息」里显示的那几项。
+
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    # 文件版本 / 产品版本，四段式 (major, minor, patch, build)
+    filevers=(1, 0, 0, 0),
+    prodvers=(1, 0, 0, 0),
+    mask=0x3f,
+    flags=0x0,
+    # 0x40004 = VOS_NT_WINDOWS32，0x1 = VFT_APP
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      # 语言 0804（简体中文）+ 代码页 04b0（Unicode），与下方 Translation 对应
+      StringTable('080404b0', [
+        StringStruct('CompanyName', '老朱'),
+        StringStruct('FileDescription', '老朱应用商店'),
+        StringStruct('FileVersion', '1.0.0.0'),
+        StringStruct('InternalName', '老朱应用商店'),
+        StringStruct('LegalCopyright', 'Copyright © 2026 老朱'),
+        StringStruct('OriginalFilename', '老朱应用商店.exe'),
+        StringStruct('ProductName', '老朱应用商店'),
+        StringStruct('ProductVersion', '1.0.0.0')
+      ])
+    ]),
+    VarFileInfo([VarStruct('Translation', [2052, 1200])])
+  ]
+)

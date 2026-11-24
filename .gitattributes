@@ -1,0 +1,8 @@
+# 全部按原始字节存储，避免 Git 改写行尾破坏 setup.iss 的 UTF-8 BOM 与 CRLF
+* -text
+
+*.exe binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.zip binary

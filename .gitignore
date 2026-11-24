@@ -1,0 +1,31 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyd
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- 构建产物 ----
+build/
+dist/
+dist_installer/
+*.manifest.bak
+
+# ---- 运行期文件 ----
+*.log
+settings.json
+.cache/
+
+# ---- 调试截图 ----
+preview_*.png
+*.tmp
+*.part
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
