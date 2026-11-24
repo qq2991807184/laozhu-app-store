@@ -114,6 +114,27 @@ build\tools\InnoSetup\ISCC.exe setup.iss
 - 图标：优先抓官网彩色 favicon（>32px 才采用），抓不到用 emoji + 品牌色兜底；部分 SPA 官网抓不到，可手动放 PNG 到 `assets/img/apps/{id}.png` 并登记进 `icons_map.json`。
 - 下载链接均指向官方渠道；直链会随版本变动，建议定期核对（直链失效时自动回退打开官方下载页）。
 
+## 发布到 GitHub
+
+仓库：<https://github.com/qq2991807184/laozhu-app-store>（公开，MIT）
+
+日常改代码后提交推送：
+
+```bash
+git add -A
+git commit -m "说明这次改了什么"
+git push
+```
+
+发新版（先同步改版本号、重新打 exe 与安装包，再执行）：
+
+```bash
+set GH_TOKEN=ghp_xxxxxxxxxxxxxxxx
+py publish_release.py --version 1.0.1
+```
+
+`publish_release.py` 会打 tag、建 Release、把安装包与绿色版一起传上去。GitHub Releases 的资产名只接受 ASCII（传中文会被静默剥成 `_Setup_v1.0.exe` 这种残名），脚本自动命名成 `LaozhuStore_Setup_v1.0.1.exe` / `LaozhuStore_Portable_v1.0.1.exe`，中文名写在 Release 说明里。
+
 ## 许可证
 
 MIT，见 [LICENSE](LICENSE)。收录的软件名称、图标、安装包版权归各自厂商所有，本项目只做索引与展示，不代理分发。
